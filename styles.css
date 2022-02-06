@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto&family=Yellowtail&display=swap');
+
+html {
+    font-family: Roboto;  
+    margin: 0;
+    height: 100%;  
+}
+
+body {
+    background-image:linear-gradient(darkslategray,rgb(24, 41, 41));
+    display: flex;
+    color: whitesmoke;
+    font-size: 16px;
+    font-weight: bold;
+    flex-direction: column;
+}
+
+#main{
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 1200px;
+    background-color: rgb(245, 88, 88);
+    border-radius: 40px;
+}
+
+#title {
+    font-size: 50px;
+    margin: 15px;
+    font-family: 'Yellowtail', cursive;
+    color: goldenrod;
+}
+
+#sketchGrid {
+    width: 960px;
+    height: 480px;
+    outline: 1px solid;
+    border-radius: 5px;
+}
+
+#menu {
+    margin: 20px;
+}
+
+.flex_column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex_row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid{
+    background-color: #D8D8D8;
+    outline: 1px solid;
+    outline-color: rgb(168, 168, 168);
+
+}
+
+
+
+
