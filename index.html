@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="styles.css">
         <script src="scripts.js" defer></script>
     </head>
-    <body>
+    <body id="sketchBody">
         <div class="flex_column" id="main">       
             <div id="title">
                 Etch-a-Sketch
@@ -16,9 +16,23 @@
             </div>
 
             <div class="flex_row" id="menu">
-                <button id="resetBtn">Reset</button>
+                <input type="range" id="gridSizeSlider" name="Grid Size" min="16" max="128" value="32" step="8">
+                <label for="Grid Size">Grid Size: <span id="gridSizeLabel"></span></label>
+
+
+                <button id="resetBtn">Erase</button>
+                <input id="colorPicker" type="color"></input>
+                <button id="rgbBtn">
+                    <img src="Images/rgb2.png" alt="RGB circle" width="20px" height="20px">
+                </button>
             </div>           
         </div>
+        <footer>
+            Developed by Michael Phelps
+            <a href="https://github.com/mpphelps/Etch-a-Sketch" style="margin-left: 10px;">
+                <img class="gitHubLogo" src="Images/GitHub.png" alt="GitHub OctoCat logo">
+            </a>
+        </footer>
     </body>
 </html>
 
