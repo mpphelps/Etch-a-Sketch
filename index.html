@@ -8,21 +8,21 @@
     </head>
     <body>
         <div class="flex_column" id="etch-a-sketch">       
-            <div class="flex_row" id="title">
+            <div class="flex_row">
                 Etch-a-Sketch
             </div>
             
             <div class="flex_column" id="sketch-grid" >               
             </div>
 
-            <div class="flex_row" id="menu">
-                <input type="range" id="gridSizeSlider" name="Grid Size" min="16" max="128" value="32" step="8">
-                <label for="Grid Size">Grid Size: <span id="gridSizeLabel"></span></label>
+            <div class="flex_row">
+                <input id="grid-size-slider" type="range" name="Grid Size" min="16" max="128" value="32" step="8">
+                <label for="Grid Size">Grid Size: <span id="grid-size-label"></span></label>
 
 
-                <button id="resetBtn">Erase</button>
-                <input id="colorPicker" type="color"></input>
-                <button id="rgbBtn">
+                <button id="reset-button">Erase</button>
+                <input id="color-picker" type="color"></input>
+                <button id="rgb-button">
                     <img src="Images/rgb2.png" alt="RGB circle" width="20px" height="20px">
                 </button>
             </div>           

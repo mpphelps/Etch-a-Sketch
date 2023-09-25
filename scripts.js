@@ -77,7 +77,7 @@ function resetGrid(e) {
             myGrid[y][x].style.backgroundColor = "#D8D8D8"
         }
     }
-    resetBtnElement.classList.add('btnClicked');
+    resetBtnElement.classList.add('btn-clicked');
 }
 function updateGridSizeLabel(e){
     if (e.type!=='input') return;
@@ -88,7 +88,7 @@ function updateGridSizeLabel(e){
 }
 function removeTransition(e) {
     if(e.propertyName!=='transform') return; // skip if it's not a transform
-    this.classList.remove('btnClicked');
+    this.classList.remove('btn-clicked');
 }
 function updateColor(e) {
     if (e.type!=='input') return;  
@@ -99,11 +99,11 @@ function toggleRainbow(e) {
     //myColor = `${colorPicker_element.value}`;
     if (rainbowMode === true) {
         rainbowMode = false;
-        rgbBtnElement.classList.remove('btnClicked');
+        rgbBtnElement.classList.remove('btn-clicked');
     }
     else {
         rainbowMode = true;
-        rgbBtnElement.classList.add('btnClicked');
+        rgbBtnElement.classList.add('btn-clicked');
     }
 }
 //End of event functions for sketch grid
@@ -111,12 +111,12 @@ function toggleRainbow(e) {
 
 //element queries
 const htmlElement = document.querySelector("html");
-const resetBtnElement = document.querySelector('#resetBtn');
+const resetBtnElement = document.querySelector('#reset-button');
 const sketchGridElement = document.querySelector('#sketch-grid');
-const gridSizeSliderElement = document.querySelector('#gridSizeSlider');
-const gridSizeLabelElement = document.querySelector('#gridSizeLabel');
-const colorPickerElement = document.querySelector('#colorPicker');
-const rgbBtnElement = document.querySelector('#rgbBtn');
+const gridSizeSliderElement = document.querySelector('#grid-size-slider');
+const gridSizeLabelElement = document.querySelector('#grid-size-label');
+const colorPickerElement = document.querySelector('#color-picker');
+const rgbBtnElement = document.querySelector('#rgb-button');
 const sketchGridWidth = sketchGridElement.offsetWidth;
 const sketchGridHeight = sketchGridElement.offsetHeight;
 

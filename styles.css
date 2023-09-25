@@ -26,7 +26,7 @@ body {
     border-radius: 40px;
 }
 
-#title {
+#etch-a-sketch > div:nth-child(1) {
     font-size: 50px;
     margin: 15px;
     font-family: 'Yellowtail', cursive;
@@ -45,7 +45,7 @@ body {
     outline-color: rgb(168, 168, 168);
 }
 
-#menu {
+#etch-a-sketch > div:nth-child(3) {
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -68,13 +68,13 @@ button:hover {
     background-color: rgb(168, 168, 168);
 }
 
-.btnClicked {
+.btn-clicked {
     transform: scale(1.1);
     transition: all .1s;
     box-shadow: 0px 0px 10px gold;
 }
 
-#resetBtn {
+#reset-button {
     width: 60px;
     height: 25px;
 }
