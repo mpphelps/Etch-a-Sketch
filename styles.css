@@ -15,7 +15,7 @@ body {
     flex-direction: column;
 }
 
-#main{
+#etch-a-sketch{
     margin: auto;
     margin-top: 50px;
     display: flex;
@@ -33,12 +33,10 @@ body {
     color: goldenrod;
 }
 
-#sketchGrid {
+#sketch-grid {
     width: 960px;
     height: 480px;
-    
-    
-    
+    flex: auto;
 }
 
 .grid{
@@ -46,7 +44,6 @@ body {
     outline: 1px solid;
     outline-color: rgb(168, 168, 168);
 }
-
 
 #menu {
     margin: auto;
@@ -94,6 +91,7 @@ button:hover {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    height: 75px;
 }
 
 footer{

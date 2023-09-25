@@ -12,12 +12,11 @@ function generateGrid(){
             myGrid[y][x] = document.createElement("div");
             myGrid[y][x].addEventListener('mousemove', colorBackground);
             myGrid[y][x].addEventListener('mousedown', startDraw);
-            myGrid[y][x].addEventListener('mouseup', stopDraw);
             myGrid[y][x].addEventListener('dragstart', (e) => {e.preventDefault()}) //prevents div from being draggable
             //myGrid[y][x].textContent = x+y;
             myGrid[y][x].classList.add("grid")
-            myGrid[y][x].style.width = `${sketchGrid_width/xSize}px`;
-            myGrid[y][x].style.height = `${sketchGrid_height/ySize}px`;
+            myGrid[y][x].style.width = `${sketchGridWidth/xSize}px`;
+            myGrid[y][x].style.height = `${sketchGridHeight/ySize}px`;
             
         }
     }
@@ -30,9 +29,9 @@ function generateGrid(){
 function appendGrid(){
     for (y = 0; y < ySize ; y++){
         const comment = document.createComment(`row ${y}`);
-        sketchGrid_element.appendChild(comment);
+        sketchGridElement.appendChild(comment);
         const tempDiv = document.createElement("div");
-        sketchGrid_element.appendChild(tempDiv);
+        sketchGridElement.appendChild(tempDiv);
         tempDiv.classList.add("flex_row");
         for (x = 0; x < xSize ; x++){
             tempDiv.appendChild(myGrid[y][x]);
@@ -42,14 +41,16 @@ function appendGrid(){
 }
 
 function initializeGrid(){
-    console.log(gridSizeSlider_element.value);
-    ySize = gridSizeSlider_element.value/2;
-    xSize = gridSizeSlider_element.value;
+    console.log(gridSizeSliderElement.value);
+    ySize = gridSizeSliderElement.value/2;
+    xSize = gridSizeSliderElement.value;
+
+    htmlElement.addEventListener('mouseup', stopDraw);
 
     generateGrid();
     appendGrid();
 
-    gridSizeLabel_element.textContent = `${xSize}x${ySize}`
+    gridSizeLabelElement.textContent = `${xSize}x${ySize}`
 }
 
 //Event functions for sketch grid
@@ -76,12 +77,12 @@ function resetGrid(e) {
             myGrid[y][x].style.backgroundColor = "#D8D8D8"
         }
     }
-    resetBtn_element.classList.add('btnClicked');
+    resetBtnElement.classList.add('btnClicked');
 }
 function updateGridSizeLabel(e){
     if (e.type!=='input') return;
-    while(sketchGrid_element.firstChild){
-        sketchGrid_element.removeChild(sketchGrid_element.firstChild);
+    while(sketchGridElement.firstChild){
+        sketchGridElement.removeChild(sketchGridElement.firstChild);
     }
     initializeGrid();
 }
@@ -91,41 +92,40 @@ function removeTransition(e) {
 }
 function updateColor(e) {
     if (e.type!=='input') return;  
-    myColor = `${colorPicker_element.value}`;
+    myColor = `${colorPickerElement.value}`;
 }
 function toggleRainbow(e) {
     if (e.type!=='click') return; 
     //myColor = `${colorPicker_element.value}`;
     if (rainbowMode === true) {
         rainbowMode = false;
-        rgbBtn_element.classList.remove('btnClicked');
+        rgbBtnElement.classList.remove('btnClicked');
     }
     else {
         rainbowMode = true;
-        rgbBtn_element.classList.add('btnClicked');
+        rgbBtnElement.classList.add('btnClicked');
     }
 }
 //End of event functions for sketch grid
 
 
 //element queries
-const sketchBody_element = document.querySelector('#sketchBody');
-const resetBtn_element = document.querySelector('#resetBtn');
-const sketchGrid_element = document.querySelector('#sketchGrid');
-const gridSizeSlider_element = document.querySelector('#gridSizeSlider');
-const gridSizeLabel_element = document.querySelector('#gridSizeLabel');
-const colorPicker_element = document.querySelector('#colorPicker');
-const rgbBtn_element = document.querySelector('#rgbBtn');
-const sketchGrid_width = sketchGrid_element.offsetWidth;
-const sketchGrid_height = sketchGrid_element.offsetHeight;
+const htmlElement = document.querySelector("html");
+const resetBtnElement = document.querySelector('#resetBtn');
+const sketchGridElement = document.querySelector('#sketch-grid');
+const gridSizeSliderElement = document.querySelector('#gridSizeSlider');
+const gridSizeLabelElement = document.querySelector('#gridSizeLabel');
+const colorPickerElement = document.querySelector('#colorPicker');
+const rgbBtnElement = document.querySelector('#rgbBtn');
+const sketchGridWidth = sketchGridElement.offsetWidth;
+const sketchGridHeight = sketchGridElement.offsetHeight;
 
 //event listeners
-sketchBody_element.addEventListener('mouseup', stopDraw);
-resetBtn_element.addEventListener("click", resetGrid);
-resetBtn_element.addEventListener("transitionend", removeTransition);
-gridSizeSlider_element.addEventListener("input", updateGridSizeLabel)
-colorPicker_element.addEventListener("input", updateColor);
-rgbBtn_element.addEventListener("click", toggleRainbow);
+resetBtnElement.addEventListener("click", resetGrid);
+resetBtnElement.addEventListener("transitionend", removeTransition);
+gridSizeSliderElement.addEventListener("input", updateGridSizeLabel)
+colorPickerElement.addEventListener("input", updateColor);
+rgbBtnElement.addEventListener("click", toggleRainbow);
 //rgbBtn_element.addEventListener("transitionend", removeTransition);
 
 initializeGrid();
