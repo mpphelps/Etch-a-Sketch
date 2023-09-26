@@ -30,18 +30,17 @@ function appendGrid(){
     for (y = 0; y < ySize ; y++){
         const comment = document.createComment(`row ${y}`);
         sketchGridElement.appendChild(comment);
-        const tempDiv = document.createElement("div");
-        sketchGridElement.appendChild(tempDiv);
-        tempDiv.classList.add("flex_row");
+
+        const rowDiv = document.createElement("div");
+        sketchGridElement.appendChild(rowDiv);
+        rowDiv.classList.add("flex_row");
         for (x = 0; x < xSize ; x++){
-            tempDiv.appendChild(myGrid[y][x]);
+            rowDiv.appendChild(myGrid[y][x]);
         }
-        
     }
 }
 
 function initializeGrid(){
-    console.log(gridSizeSliderElement.value);
     ySize = gridSizeSliderElement.value/2;
     xSize = gridSizeSliderElement.value;
 
@@ -111,12 +110,12 @@ function toggleRainbow(e) {
 
 //element queries
 const htmlElement = document.querySelector("html");
-const resetBtnElement = document.querySelector('#reset-button');
-const sketchGridElement = document.querySelector('#sketch-grid');
-const gridSizeSliderElement = document.querySelector('#grid-size-slider');
-const gridSizeLabelElement = document.querySelector('#grid-size-label');
-const colorPickerElement = document.querySelector('#color-picker');
-const rgbBtnElement = document.querySelector('#rgb-button');
+const resetBtnElement = document.getElementById('reset-button');
+const sketchGridElement = document.getElementById('sketch-grid');
+const gridSizeSliderElement = document.getElementById('grid-size-slider');
+const gridSizeLabelElement = document.getElementById('grid-size-label');
+const colorPickerElement = document.getElementById('color-picker');
+const rgbBtnElement = document.getElementById('rgb-button');
 const sketchGridWidth = sketchGridElement.offsetWidth;
 const sketchGridHeight = sketchGridElement.offsetHeight;
 

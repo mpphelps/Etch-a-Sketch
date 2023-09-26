@@ -1,14 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto&family=Yellowtail&display=swap');
-
-html {
+:root {
     min-height: 100%;
     background-image:linear-gradient(darkslategray,rgb(24, 41, 41));
     font-family: Roboto;     
     color: whitesmoke;
     font-weight: bold;
-}
-
-body {
     display: flex;
     flex-direction: column;
 }
