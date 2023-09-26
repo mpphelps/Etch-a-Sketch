@@ -3,7 +3,10 @@ let ySize = 16;
 let myGrid = [];
 let mouseDown = false;
 let myColor = "rgb(112, 112, 112)";
+let lastColor = myColor;
+let mainBackgroundColor = window.getComputedStyle(document.documentElement).getPropertyValue('--main-bg-color');
 let rainbowMode = false;
+let eraserMode = false;
 
 function generateGrid(){
     for (y = 0; y < ySize ; y++){
@@ -59,6 +62,9 @@ function colorBackground(e) {
     if (rainbowMode === true) {
         myColor=`#${Math.floor(Math.random()*16777215).toString(16)}`;
     }
+    if (eraserMode === true) {
+        myColor = mainBackgroundColor;
+    }
     this.style.backgroundColor=myColor;
 }
 function startDraw(e) {
@@ -76,7 +82,7 @@ function resetGrid(e) {
             myGrid[y][x].style.backgroundColor = "#D8D8D8"
         }
     }
-    resetBtnElement.classList.add('btn-clicked');
+    clearBtnElement.classList.add('btn-clicked');
 }
 function updateGridSizeLabel(e){
     if (e.type!=='input') return;
@@ -93,24 +99,52 @@ function updateColor(e) {
     if (e.type!=='input') return;  
     myColor = `${colorPickerElement.value}`;
 }
-function toggleRainbow(e) {
+function toggleRainbowMode(e) {
     if (e.type!=='click') return; 
-    //myColor = `${colorPicker_element.value}`;
     if (rainbowMode === true) {
-        rainbowMode = false;
-        rgbBtnElement.classList.remove('btn-clicked');
+        turnOffRainbowMode();
     }
     else {
-        rainbowMode = true;
-        rgbBtnElement.classList.add('btn-clicked');
+        turnOnRainbowMode();
+        turnOffEraserMode();
     }
 }
-//End of event functions for sketch grid
+function turnOffRainbowMode() {
+    rainbowMode = false;
+    rgbBtnElement.classList.remove('btn-clicked');
+}
+function turnOnRainbowMode() {
+    rainbowMode = true;
+    rgbBtnElement.classList.add('btn-clicked');
+}
+
+function toggleEraserMode(e) {
+    if (e.type!=='click') return; 
+    //myColor = `${colorPicker_element.value}`;
+    if (eraserMode === true) {
+        turnOffEraserMode();
+    }
+    else {
+        turnOnEraserMode();
+        turnOffRainbowMode();
+    }
+}
+function turnOffEraserMode() {
+    myColor = lastColor;
+    eraserMode = false;
+    eraserBtnElement.classList.remove('btn-clicked');
+}
+function turnOnEraserMode() {
+    lastColor = myColor;
+    eraserMode = true;
+    eraserBtnElement.classList.add('btn-clicked');
+}
 
 
 //element queries
 const htmlElement = document.querySelector("html");
-const resetBtnElement = document.getElementById('reset-button');
+const clearBtnElement = document.getElementById('clear-button');
+const eraserBtnElement = document.getElementById('eraser-button');
 const sketchGridElement = document.getElementById('sketch-grid');
 const gridSizeSliderElement = document.getElementById('grid-size-slider');
 const gridSizeLabelElement = document.getElementById('grid-size-label');
@@ -120,11 +154,12 @@ const sketchGridWidth = sketchGridElement.offsetWidth;
 const sketchGridHeight = sketchGridElement.offsetHeight;
 
 //event listeners
-resetBtnElement.addEventListener("click", resetGrid);
-resetBtnElement.addEventListener("transitionend", removeTransition);
+clearBtnElement.addEventListener("click", resetGrid);
+clearBtnElement.addEventListener("transitionend", removeTransition);
 gridSizeSliderElement.addEventListener("input", updateGridSizeLabel)
 colorPickerElement.addEventListener("input", updateColor);
-rgbBtnElement.addEventListener("click", toggleRainbow);
+rgbBtnElement.addEventListener("click", toggleRainbowMode);
+eraserBtnElement.addEventListener("click", toggleEraserMode);
 //rgbBtn_element.addEventListener("transitionend", removeTransition);
 
 initializeGrid();

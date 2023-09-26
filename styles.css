@@ -7,13 +7,15 @@
     font-weight: bold;
     display: flex;
     flex-direction: column;
+    --main-bg-color: #D8D8D8;
+    --etch-a-sketch-border-color: rgb(245, 88, 88);
 }
 
 #etch-a-sketch{
     margin: auto;
     margin-top: 50px;
     width: 1200px;
-    background-color: rgb(245, 88, 88);
+    background-color: var(--etch-a-sketch-border-color);
     border-radius: 40px;
 }
 
@@ -31,7 +33,7 @@
 }
 
 .grid{
-    background-color: #D8D8D8;
+    background-color: var(--main-bg-color);
     outline: 1px solid;
     outline-color: rgb(168, 168, 168);
 }
@@ -42,7 +44,7 @@
 }
 
 button {
-    background-color: #D8D8D8;
+    background-color: var(--main-bg-color);
     border-color: rgb(168, 168, 168);
     border-style: solid, 1px;
     border-radius: 5px;
@@ -63,7 +65,12 @@ button:hover {
     box-shadow: 0px 0px 10px gold;
 }
 
-#reset-button {
+#clear-button {
+    width: 60px;
+    height: 25px;
+}
+
+#eraser-button {
     width: 60px;
     height: 25px;
 }
